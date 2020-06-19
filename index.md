@@ -1,3 +1,3 @@
 
 <h3>Testing </h3>
-[Link to another page](./Next-project.md).
+[Link to another page](https://hamzehloui.com/DS-Notebooks/).
