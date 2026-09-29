@@ -45,7 +45,8 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
 .spot{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(520px circle at var(--mx,30%) var(--my,20%),rgba(31,91,214,.06),transparent 70%);transition:opacity .3s}
 
 .page{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding-inline:clamp(20px,5vw,64px);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,7vw,112px)}
-@media (max-width:960px){.page{grid-template-columns:1fr;gap:0}}
+@media (max-width:960px){.page{grid-template-columns:minmax(0,1fr);gap:0}}
+.side,.main{min-width:0}
 
 /* left */
 .side{position:sticky;top:env(safe-area-inset-top,0px);height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding-block:clamp(56px,11vh,112px) 48px}
