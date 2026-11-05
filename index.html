@@ -105,7 +105,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
 .side,.main{min-width:0}
 
 /* left */
-.side{position:sticky;top:env(safe-area-inset-top,0px);height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding-block:clamp(56px,11vh,112px) 48px}
+.side{display:flex;flex-direction:column;gap:30px;padding-block:clamp(56px,11vh,112px) 64px}
 @media (max-width:960px){.side{position:static;height:auto;padding-block:56px 32px}}
 .mono-mark{display:inline-grid;place-items:center;width:44px;height:44px;border:1px solid var(--ink);border-radius:10px;font-family:var(--mono);font-size:14px;font-weight:500;letter-spacing:.02em;margin-bottom:36px}
 h1{font-size:clamp(40px,4.6vw,58px);font-weight:500;line-height:1.02;letter-spacing:-.04em;margin:0;text-wrap:balance}
@@ -140,8 +140,87 @@ h1{font-size:clamp(40px,4.6vw,58px);font-weight:500;line-height:1.02;letter-spac
 .social .icons a::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translate(-50%,4px);background:var(--ink);color:#fff;font-size:12px;font-weight:400;padding:4px 8px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s}
 .social .icons a:hover::after,.social .icons a:focus-visible::after{opacity:1;transform:translate(-50%,0)}
 .social .handle{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-left:6px}
+/* compact icon row: the reel wall is the main event now */
+.social .icons{display:flex;flex-wrap:wrap;gap:6px;max-width:460px}
+.social .icons a{width:38px;height:38px;border-radius:11px}
+/* roomier tap targets once the sidebar goes full width */
+@media (max-width:960px){.social .icons a{width:44px;height:44px}.social .icons{gap:8px}}
+.social .icons svg{width:18px;height:18px;padding:0;background:none;border:0;border-radius:0}
+.social .icons a:hover{background:linear-gradient(135deg,#1F5BD6,#12A3B4);border-color:transparent;color:#fff}
+.social .icons a:hover svg{background:none;border-color:transparent;transform:none}
+/* reel wall */
+.play{position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;background:rgba(10,12,16,.5);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.3);transition:background .25s,transform .25s}
+.play::after{content:"";position:absolute;top:50%;left:52%;transform:translate(-50%,-50%);border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff}
+.w-hero .play{top:12px;right:12px;width:30px;height:30px}
+.w-hero:hover .play,.w-row:hover .play{background:linear-gradient(135deg,#1F5BD6,#12A3B4);transform:scale(1.08)}
+.w-thumb .play{top:5px;right:5px;width:19px;height:19px}
+.w-thumb .play::after{border-width:4px 0 4px 6px}
+
+/* ---- Mo on social ---- */
+.sec-sub{margin:-4px 0 26px;font-size:16.5px;color:var(--ink-2);max-width:52ch}
+.stack{display:grid;gap:12px;max-width:460px}
+.w-card{border:1px solid var(--rule);border-radius:16px;background:rgba(255,255,255,.86);backdrop-filter:blur(6px);overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
+.w-card:hover{transform:translateY(-2px);border-color:#D4DCEC;box-shadow:0 22px 44px -26px rgba(11,13,18,.5)}
+.w-k{display:flex;align-items:center;gap:7px;margin:0;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.w-k svg{width:14px;height:14px;fill:currentColor;flex-shrink:0}
+.w-k svg.stroke{fill:none;stroke:currentColor;stroke-width:2.2}
+.w-k svg.stroke .dot{fill:currentColor;stroke:none}
+/* instagram */
+.w-ig{padding:0}
+.w-hero{position:relative;display:block;aspect-ratio:9/16;overflow:hidden}
+.w-hero img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.w-ig:hover .w-hero img{transform:scale(1.04)}
+.w-chip{position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:rgba(10,12,16,.55);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.26);font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#fff}
+.w-chip svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.2}
+.w-chip svg .dot{fill:currentColor;stroke:none}
+.w-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;list-style:none;margin:0;padding:10px}
+.w-strip a{display:block}
+.w-strip img{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:9px;border:1px solid var(--rule);transition:transform .25s}
+.w-strip a:hover img{transform:translateY(-2px)}
+.w-all{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3px;width:100%;aspect-ratio:9/16;border-radius:9px;border:1px dashed #C9D3E6;background:var(--wash);font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);text-decoration:none;text-align:center;padding:4px;transition:color .2s,border-color .2s,background .2s}
+.w-all:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-wash)}
+/* youtube + x rows */
+.w-yt,.w-x{padding:14px 15px}
+.w-row{display:flex;gap:12px;align-items:flex-start;margin-top:11px;text-decoration:none;color:inherit}
+.w-thumb{position:relative;flex-shrink:0;width:78px;aspect-ratio:9/16;border-radius:10px;overflow:hidden;border:1px solid var(--rule);background:var(--wash)}
+.w-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.w-rt{display:flex;flex-direction:column;gap:6px;min-width:0}
+.w-title{font-size:14.5px;font-weight:500;line-height:1.35;letter-spacing:-.01em;color:var(--ink);text-wrap:pretty}
+.w-row:hover .w-title{color:var(--accent)}
+.w-meta{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.w-ph{margin:11px 0 0;font-size:14px;color:var(--ink-3);line-height:1.45}
+/* research */
+.w-sch{padding:14px 15px 4px}
+.w-sh{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.w-stats{display:flex;gap:20px;list-style:none;margin:0;padding:0}
+.w-stats li{display:flex;align-items:baseline;gap:6px}
+.w-stats b{font-size:19px;font-weight:500;letter-spacing:-.02em;font-variant-numeric:tabular-nums;background:linear-gradient(180deg,#0B0D12,#1F5BD6 160%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.w-stats span{font-size:12.5px;color:var(--ink-2)}
+.w-pubs{list-style:none;margin:12px 0 0;padding:0}
+.w-pubs li{border-top:1px solid var(--rule)}
+.w-pubs a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:11px 0;text-decoration:none;color:inherit}
+.p-t{font-size:14.5px;font-weight:500;letter-spacing:-.01em;line-height:1.35;text-wrap:pretty}
+.w-pubs a:hover .p-t{color:var(--accent)}
+.p-v{grid-column:1;font-size:12.5px;color:var(--ink-3)}
+.p-c{grid-column:2;grid-row:1/span 2;align-self:center;font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:nowrap}
+.p-c b{font-size:14px;color:var(--ink);font-weight:500}
+/* threads + facebook */
+.tweets{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:2px}
+.tweets a{display:block;padding:10px 0;text-decoration:none;color:inherit;border-top:1px solid var(--rule)}
+.tweets li:first-child a{border-top:0;padding-top:4px}
+.t-t{display:block;font-size:14.5px;line-height:1.4;letter-spacing:-.01em;color:var(--ink);text-wrap:pretty}
+.tweets a:hover .t-t{color:var(--accent)}
+.links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;list-style:none;margin:2px 0 0;padding:0}
+.links a{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1px solid var(--rule);border-radius:13px;background:var(--bg);text-decoration:none;font-size:14.5px;font-weight:500;white-space:nowrap;transition:border-color .2s,transform .2s,box-shadow .2s}
+.links svg{width:18px;height:18px;fill:currentColor;flex-shrink:0}
+.links svg.stroke{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
+.links a:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:0 10px 24px -12px rgba(11,13,18,.4)}
+.links .arrow{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+@media (max-width:960px){.stack{max-width:none}}
+@media (max-width:420px){.links{grid-template-columns:1fr}}
+@media (prefers-reduced-motion: reduce){.w-card,.w-hero img,.w-strip img{transition:none}}
+
 @media (max-width:960px){.social{margin-top:32px}.social ul{max-width:none}}
-@media (max-width:420px){.social ul{grid-template-columns:1fr}}
 .creds-badges{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:16px 0 0}
 .badge{display:inline-flex;align-items:center;gap:10px;border-radius:12px;text-decoration:none;color:var(--ink);font-weight:500;line-height:1.2}
 .badge-cert{position:relative;padding:9px 13px 9px 10px;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,#FF9900,#E8820C 45%,#232F3E) border-box;border:1.5px solid transparent;box-shadow:0 10px 26px -16px rgba(232,130,12,.75);transition:transform .2s,box-shadow .2s}
@@ -328,17 +407,59 @@ h1{background:linear-gradient(180deg,#0B0D12 30%,#3A4252);-webkit-background-cli
         </ul>
       </nav>
     </div>
-    <div class="social rise d4">
-      <ul class="primary">
-        <li><a href="https://www.linkedin.com/in/mohammad-hamzehloui-48102b63/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>LinkedIn<span class="arrow">↗</span></a></li>
-        <li><a href="https://github.com/mohammadhamzehloui" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>GitHub<span class="arrow">↗</span></a></li>
-        <li><a href="https://scholar.google.com/citations?user=8PcqS7cAAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="Google Scholar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.24 13.77 0 9.5 12 0l12 9.5-5.24 4.27A7.5 7.5 0 0 0 12 9.5a7.5 7.5 0 0 0-6.76 4.27ZM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14Z"/></svg>Scholar<span class="arrow">↗</span></a></li>
-        <li><a href="https://www.youtube.com/@mohamzehloui" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.11-2.12C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.39.58A3 3 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 3 3 0 0 0 2.11 2.12C4.5 20.5 12 20.5 12 20.5s7.5 0 9.39-.58a3 3 0 0 0 2.11-2.12A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.22 3.6Z"/></svg>YouTube<span class="arrow">↗</span></a></li>
-        <li><a href="https://x.com/mohamzehloui" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93Zm-1.29 19.5h2.04L6.49 3.24H4.3Z"/></svg>X<span class="arrow">↗</span></a></li>
-        <li><a href="https://www.threads.com/@mohamzehloui" target="_blank" rel="noopener"><svg viewBox="3 2 19 20" aria-hidden="true" class="stroke"><path d="M17.3 8.6C16.4 5.3 14.2 3.2 11.9 3.2 7.2 3.2 4.6 6.8 4.6 12s2.6 8.8 7.4 8.8c3.9 0 6.9-2.3 6.9-5.6 0-3.1-2.6-4.5-5.4-4.5-2.5 0-4.4 1.2-4.4 3.1 0 1.6 1.4 2.6 3.2 2.6 3.1 0 4.4-2.6 4.4-6.4"/></svg>Threads<span class="arrow">↗</span></a></li>
-        <li><a href="https://www.instagram.com/mohamzehloui/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.6" cy="6.4" r="1.1" class="dot"/></svg>Instagram<span class="arrow">↗</span></a></li>
-        <li><a href="https://www.facebook.com/profile.php?id=61592929496975" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.07A12 12 0 1 0 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.24 2.68.24v2.95h-1.5c-1.49 0-1.96.93-1.96 1.87v2.24h3.32l-.53 3.49h-2.79V24A12 12 0 0 0 24 12.07Z"/></svg>Facebook<span class="arrow">↗</span></a></li>
+    <div class="stack rise d4">
+
+      <article class="w-card w-ig">
+        <a class="w-hero" href="https://www.instagram.com/mohamzehloui/reel/DfWYhW2E5P7/" target="_blank" rel="noopener">
+          <img src="reels/router.jpg" width="440" height="782" loading="lazy" alt="Reel: Your app needs a router">
+          <span class="play" aria-hidden="true"></span>
+          <span class="w-chip"><svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.6" cy="6.4" r="1.1" class="dot"/></svg> Latest reel</span>
+        </a>
+        <ul class="w-strip">
+          <li><a href="https://www.instagram.com/mohamzehloui/reel/DeOIr_YkcWD/" target="_blank" rel="noopener"><img src="reels/models.jpg" width="300" height="533" loading="lazy" alt="Reel: One app, many models"></a></li>
+          <li><a href="https://www.instagram.com/mohamzehloui/reel/DeLunC8FM9t/" target="_blank" rel="noopener"><img src="reels/price.jpg" width="300" height="533" loading="lazy" alt="Reel: 5x the price for +0.5%?"></a></li>
+          <li><a class="w-all" href="https://www.instagram.com/mohamzehloui/" target="_blank" rel="noopener"><span>All reels</span><span aria-hidden="true">&#8599;</span></a></li>
+        </ul>
+      </article>
+
+      <article class="w-card w-x">
+        <p class="w-k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93Zm-1.29 19.5h2.04L6.49 3.24H4.3Z"/></svg> On X</p>
+        <ul class="tweets">
+            <li><a href="https://x.com/mohamzehloui/status/2081409778979635427" target="_blank" rel="noopener"><span class="t-t">Is it just me, or is OpenAI’s speech-to-text significantly better than Anthropic’s?</span></a></li>
+            <li><a href="https://x.com/mohamzehloui/status/2073912956971336106" target="_blank" rel="noopener"><span class="t-t">Last day of Fable 5. Making the most of it.</span></a></li>
+        </ul>
+      </article>
+
+      <article class="w-card w-yt">
+        <p class="w-k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.11-2.12C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.39.58A3 3 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 3 3 0 0 0 2.11 2.12C4.5 20.5 12 20.5 12 20.5s7.5 0 9.39-.58a3 3 0 0 0 2.11-2.12A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8ZM9.55 15.57V8.43L15.82 12Z"/></svg> On YouTube</p>
+        <!-- YT:START --><a class="w-row" href="https://www.youtube.com/watch?v=yQJpVfJPxuE" target="_blank" rel="noopener">
+            <span class="w-thumb"><img src="https://i.ytimg.com/vi/yQJpVfJPxuE/maxresdefault.jpg" width="78" height="139" loading="lazy" alt=""><span class="play" aria-hidden="true"></span></span>
+            <span class="w-rt"><span class="w-title">Number one on a leaderboard doesn&#x27;t mean number one for your application</span><span class="w-meta">6 Oct 2026</span></span>
+          </a><!-- YT:END -->
+      </article>
+
+      <article class="w-card w-sch">
+        <div class="w-sh">
+          <p class="w-k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.24 13.77 0 9.5 12 0l12 9.5-5.24 4.27A7.5 7.5 0 0 0 12 9.5a7.5 7.5 0 0 0-6.76 4.27ZM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14Z"/></svg> Research</p>
+          <ul class="w-stats">
+            <li><b>50</b><span>citations</span></li>
+            <li><b>2</b><span>h-index</span></li>
+          </ul>
+        </div>
+        <ul class="w-pubs">
+            <li><a href="https://scholar.google.com/citations?user=8PcqS7cAAAAJ&amp;hl=en" target="_blank" rel="noopener"><span class="p-t">A study on the most prominent areas of research in microservices</span><span class="p-v">Int. Journal of Machine Learning and Computing &middot; 2019</span><span class="p-c"><b>27</b> cites</span></a></li>
+            <li><a href="https://scholar.google.com/citations?user=8PcqS7cAAAAJ&amp;hl=en" target="_blank" rel="noopener"><span class="p-t">A systematic mapping study on microservices</span><span class="p-v">Int. Conference of Reliable Information and Communication Technology &middot; 2019</span><span class="p-c"><b>22</b> cites</span></a></li>
+            <li><a href="https://scholar.google.com/citations?user=8PcqS7cAAAAJ&amp;hl=en" target="_blank" rel="noopener"><span class="p-t">Identifying Key Factors Influencing the Cost of Running Microservices</span><span class="p-v">Int. Congress on Information and Communication Technology &middot; 2025</span><span class="p-c"><b>1</b> cites</span></a></li>
+        </ul>
+      </article>
+
+      <ul class="links">
+        <li><a href="https://www.linkedin.com/in/mohammad-hamzehloui-48102b63/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>LinkedIn<span class="arrow">&#8599;</span></a></li>
+        <li><a href="https://github.com/mohammadhamzehloui" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>GitHub<span class="arrow">&#8599;</span></a></li>
+        <li><a href="https://www.threads.com/@mohamzehloui" target="_blank" rel="noopener"><svg viewBox="3 2 19 20" aria-hidden="true" class="stroke"><path d="M17.3 8.6C16.4 5.3 14.2 3.2 11.9 3.2 7.2 3.2 4.6 6.8 4.6 12s2.6 8.8 7.4 8.8c3.9 0 6.9-2.3 6.9-5.6 0-3.1-2.6-4.5-5.4-4.5-2.5 0-4.4 1.2-4.4 3.1 0 1.6 1.4 2.6 3.2 2.6 3.1 0 4.4-2.6 4.4-6.4"/></svg>Threads<span class="arrow">&#8599;</span></a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=61592929496975" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.07A12 12 0 1 0 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.24 2.68.24v2.95h-1.51c-1.49 0-1.96.93-1.96 1.87v2.24h3.33l-.53 3.49h-2.8V24A12 12 0 0 0 24 12.07Z"/></svg>Facebook<span class="arrow">&#8599;</span></a></li>
       </ul>
+
     </div>
   </aside>
 
